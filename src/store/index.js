@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import table from './table';
+import table from './modules/table';
 
 Vue.use(Vuex);
 

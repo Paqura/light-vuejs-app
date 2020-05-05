@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-table striped bordered hover :items="items" :fields="fields">
+    <b-table striped bordered hover :items="getFullData" :fields="fields">
       <template v-slot:cell(flag)="data">
         <img :src="data.value" alt="Flag" width="32px" />
       </template>
@@ -9,11 +9,11 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   data() {
     return {
-      endpoint: 'https://corona.lmao.ninja/v2/countries',
-      items: [],
       fields: [
         {
           key: 'country',
@@ -32,14 +32,18 @@ export default {
     };
   },
 
+  computed: mapGetters(['getFullData']),
+
   methods: {
+    ...mapActions(['fetchData']),
+
     flagFormatter(value, key, item) {
       return item.countryInfo.flag;
     },
   },
 
-  async mounted() {
-    this.items = await fetch(this.endpoint).then((res) => res.json());
+  mounted() {
+    this.fetchData();
   },
 };
 </script>

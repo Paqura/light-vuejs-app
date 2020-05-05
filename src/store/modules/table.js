@@ -1,20 +1,28 @@
 const state = () => ({
-  items: [],
+  data: [],
 });
 
 const getters = {
-  getData(currentState) {
-    return currentState.items;
+  getFullData(currentState) {
+    return currentState.data;
   },
 };
 
 const actions = {
+  async fetchData(ctx) {
+    const endpoint = 'https://corona.lmao.ninja/v2/countries';
+    const response = await fetch(endpoint).then((res) => res.json());
+    ctx.commit('updateData', response);
+  },
 };
 
-const mutations = {};
+const mutations = {
+  updateData(currentState, data) {
+    currentState.data = data;
+  },
+};
 
 export default {
-  namespaced: true,
   state,
   getters,
   actions,
