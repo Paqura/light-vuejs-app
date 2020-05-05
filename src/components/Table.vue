@@ -20,9 +20,13 @@ export default {
   computed: mapGetters(['getFullData']),
 
   methods: {
-    ...mapActions(['fetchData']),
+    ...mapActions(['fetchData', 'sortData']),
 
     flagFormatter,
+
+    sort() {
+      this.sortData();
+    },
   },
 
   mounted() {

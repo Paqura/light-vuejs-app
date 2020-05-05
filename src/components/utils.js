@@ -2,10 +2,12 @@ export const allowedFields = [
   {
     key: 'country',
     label: 'Country',
+    sortable: true,
   },
   {
     key: 'cases',
     label: 'Cases',
+    sortable: true,
   },
   {
     key: 'flag',
