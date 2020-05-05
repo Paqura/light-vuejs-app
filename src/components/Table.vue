@@ -36,14 +36,10 @@ export default {
     flagFormatter(value, key, item) {
       return item.countryInfo.flag;
     },
-
-    async getData() {
-      this.items = await fetch(this.endpoint).then((res) => res.json());
-    },
   },
 
-  created() {
-    this.getData();
+  async mounted() {
+    this.items = await fetch(this.endpoint).then((res) => res.json());
   },
 };
 </script>
