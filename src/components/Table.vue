@@ -10,25 +10,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { allowedFields, flagFormatter } from './utils';
 
 export default {
   data() {
     return {
-      fields: [
-        {
-          key: 'country',
-          label: 'Country',
-        },
-        {
-          key: 'cases',
-          label: 'Cases',
-        },
-        {
-          key: 'flag',
-          label: 'Flag',
-          formatter: 'flagFormatter',
-        },
-      ],
+      fields: allowedFields,
     };
   },
 
@@ -37,9 +24,7 @@ export default {
   methods: {
     ...mapActions(['fetchData']),
 
-    flagFormatter(value, key, item) {
-      return item.countryInfo.flag;
-    },
+    flagFormatter,
   },
 
   mounted() {
