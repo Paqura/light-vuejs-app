@@ -1,11 +1,9 @@
 <template>
-  <b-container>
-    <b-table striped bordered hover :items="getFullData" :fields="fields">
-      <template v-slot:cell(flag)="data">
-        <img :src="data.value" alt="Flag" width="32px" />
-      </template>
-    </b-table>
-  </b-container>
+  <b-table striped bordered hover :items="getFullData" :fields="fields">
+    <template v-slot:cell(flag)="data">
+      <img :src="data.value" alt="Flag" width="32px" />
+    </template>
+  </b-table>
 </template>
 
 <script>

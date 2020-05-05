@@ -1,3 +1,5 @@
+import Api from '../../api';
+
 const state = () => ({
   data: [],
 });
@@ -10,9 +12,15 @@ const getters = {
 
 const actions = {
   async fetchData(ctx) {
-    const endpoint = 'https://corona.lmao.ninja/v2/countries';
-    const response = await fetch(endpoint).then((res) => res.json());
+    const response = await fetch(Api.countryUrl).then((res) => res.json());
     ctx.commit('updateData', response);
+  },
+
+  async fetchCountry(ctx, countryName) {
+    const response = await fetch(`${Api.countryUrl}${countryName}`)
+      .then((res) => res.json());
+
+    ctx.commit('updateData', [response]);
   },
 };
 
